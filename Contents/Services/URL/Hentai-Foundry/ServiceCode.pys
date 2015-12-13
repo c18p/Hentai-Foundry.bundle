@@ -1,0 +1,28 @@
+def MetadataObjectForURL(url):
+
+        thumb = url.split('?')[0]
+        thumb = thumb.replace("/r-", "/f-", 1)
+
+        return PhotoObject(
+                title = "na",
+                summary = "na",
+                thumb = thumb
+        )
+
+####################################################################################################
+def MediaObjectsForURL(url):
+
+        return [
+                MediaObject(
+                        parts = [PartObject(key=Callback(GetPhoto, url = url))]
+                )
+        ]
+
+####################################################################################################
+def GetPhoto(url):
+
+        data = HTML.ElementFromURL(url + '?enterAgree=1&size=1550')
+
+        img = 'http:' + str(data.xpath("//div[@id='yw0']/div[@class='boxbody']/center/img/@src")[0])
+
+        return Redirect(img)

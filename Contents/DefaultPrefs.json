@@ -1,0 +1,9 @@
+[
+        {
+                "id":           "sort",
+                "label":        "default_sorting",
+                "type":         "enum",
+                "values":       ["-created", "created", "-rating", "name", "-name", "-views"],
+                "default":      "-rating",
+        },
+]
